@@ -3,12 +3,14 @@ import { updateVote } from '../reducers/anecdoteReducer'
 import { setNotificationTimer } from '../reducers/notificationReducer'
 const ListAnecdote = () => {
   const anecdotes = useSelector(state => {
+    console.log(anecdotes)
     if(state.filter === null){
       return state.anecdotes.sort((a,b) => b.votes - a.votes)
     }
+    // return state.anecdotes.filter(anecdote => anecdote.content.includes(state.filter)).sort((a,b)=> b.votes - a.votes)
     return state.anecdotes.filter(anecdote => anecdote.content.toLowerCase().includes(state.filter.toLowerCase())).sort((a,b)=> b.votes - a.votes)
   })
-  
+  console.log(anecdotes)
   const dispatch = useDispatch()
 
   const vote = (id, content) => {
