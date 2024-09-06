@@ -3,7 +3,7 @@ import { updateVote } from '../reducers/anecdoteReducer'
 import { setNotificationTimer } from '../reducers/notificationReducer'
 const ListAnecdote = () => {
   const anecdotes = useSelector(state => {
-    console.log(anecdotes)
+    // console.log(anecdotes)
     if(state.filter === null){
       return state.anecdotes.sort((a,b) => b.votes - a.votes)
     }
