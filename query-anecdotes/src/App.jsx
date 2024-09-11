@@ -8,7 +8,7 @@ const App = () => {
   
   const queryClient = useQueryClient()
   const dispatch = useNotificationDispatch()
-const updateAnecdoteMutation = useMutation({
+  const updateAnecdoteMutation = useMutation({
   mutationFn : updateAnecdoteVote,
   onSuccess : () =>{
     queryClient.invalidateQueries({queryKey:['anecdotes']})
@@ -23,9 +23,12 @@ const updateAnecdoteMutation = useMutation({
  
   const handleVote =  async (anecdote) => {
     updateAnecdoteMutation.mutate({...anecdote, votes: anecdote.votes+1 })
-    await dispatch({type: 'SHOW', payload: `You have voted for the following anecdote: ${anecdote.content}`})
+    await dispatch({
+      type: 'SHOW',
+      payload: `You have voted for the following anecdote: ${anecdote.content}`
+    });
     setTimeout(()=>{
-      dispatch({type: 'HIDE', payload: ''})
+      dispatch({type: 'HIDE'})
     },5000)
   }
 

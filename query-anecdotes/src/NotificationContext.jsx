@@ -3,9 +3,9 @@ import {useContext,createContext, useReducer} from 'react'
 const NotificationReducer = (state, action) =>{
   switch (action.type) {
     case 'SHOW':
-      return state.concat({content: action.payload.content, id: action.payload.id})
+      return action.payload; 
     case 'HIDE':
-      return state.filter(item => item.id !== action.payload.id)
+      return '';
     default:
       return state
   }
